@@ -22,8 +22,16 @@
   {% for comment in comments %}
     <div class="media content-section">
       <div class="media-body">
-        <strong>{{ comment.author }}</strong> - <small class="text-muted">{{ comment.date_posted|date:"F d, Y" }}</small>
+        <strong>{{ comment.author }}</strong> - 
+        <small class="text-muted">{{ comment.date_posted|date:"F d, Y" }}</small>
         <p>{{ comment.content }}</p>
+
+        {% if comment.author == user %}
+          <div class="mt-2">
+            <a href="{% url 'comment-update' comment.pk %}" class="btn btn-sm btn-outline-info">Редактировать</a>
+            <a href="{% url 'comment-delete' comment.pk %}" class="btn btn-sm btn-outline-danger">Удалить</a>
+          </div>
+        {% endif %}
       </div>
     </div>
   {% empty %}
