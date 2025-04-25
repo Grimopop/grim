@@ -12,6 +12,9 @@ from django.views.generic import (
 )
 from .models import Post, Comment
 from .forms import CommentForm
+from django.contrib import messages
+from django.shortcuts import redirect
+
 
 
 def home(request):
@@ -41,7 +44,7 @@ class UserPostListView(ListView):
 
 class PostDetailView(DetailView):
     model = Post
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['comments'] = self.object.comments.all()
@@ -49,15 +52,25 @@ class PostDetailView(DetailView):
         return context
 
     def post(self, request, *args, **kwargs):
+        from django.contrib import messages
+        from django.shortcuts import redirect
+
         self.object = self.get_object()
+
+        if not request.user.is_authenticated:
+            messages.warning(request, "Чтобы оставить комментарий, войдите в аккаунт.")
+            return redirect('login')
+
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
             comment.post = self.object
             comment.author = request.user
             comment.save()
-            return self.get(self.request, *args, **kwargs)
-        return self.render_to_response({'form': form})
+            messages.success(request, "Комментарий успешно добавлен!")
+            return self.get(request, *args, **kwargs)
+        
+        return self.render_to_response(self.get_context_data(form=form))
 
 
 class PostCreateView(LoginRequiredMixin, CreateView):

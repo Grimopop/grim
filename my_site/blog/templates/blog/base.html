@@ -65,14 +65,14 @@
           {% block content %}{% endblock %}
         </div>
         <div class="col-md-4">
-          <div class="content-section">
-            <h3>Разделы</h3>
-            <p class='text-muted'>Новости и события
+          <div class="content-section text-center">
+            <h3 class="text-uppercase font-weight-bold border-bottom pb-2 mb-2 d-inline-block">Разделы</h3>
+            <p class='text-muted font-italic mb-3'>Новости и события
               <ul class="list-group">
-                <li class="list-group-item list-group-item-light">Новая информация</li>
-                <li class="list-group-item list-group-item-light">Обьявления админов</li>
-                <li class="list-group-item list-group-item-light">Розыгрыши</li>
-                <li class="list-group-item list-group-item-light">Встречи участников</li>
+                <li class="btn btn-outline-primary mb-2" disabled>Новая информация</li>
+                <li class="btn btn-outline-primary mb-2" disabled>Обьявления админов</li>
+                <li class="btn btn-outline-primary mb-2" disabled>Розыгрыши</li>
+                <li class="btn btn-outline-primary mb-2" disabled>Встречи участников</li>
               </ul>
             </p>
           </div>
@@ -86,8 +86,8 @@
     </footer>
 
     <!-- Дополнительные скрипты JavaScript -->
-    <!-- Сначала jQuery, затем Popper.js, последним Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <!-- Сначала jQuery, затем Popper.js, последним Bootstrap JS, jquery 3.2.1 лучше работает, бутстрап мождно переключить на 5 , надо бы поменять ссылки--> 
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
